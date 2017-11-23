@@ -20,5 +20,18 @@ obj_object.rotation_euler.z=0
 
 bpy.context.
 
+##copy physics property to every
+
+scene = bpy.context.scene
+scene.objects.active = bpy.data.objects["template"]  
+for obj in scene.objects:
+    if obj.type == 'MESH':
+        obj.select = True
+
+
+#bpy.ops.object.constraints_copy()
+bpy.ops.rigidbody.object_settings_copy()
+
+
 
 print('Imported name: ', obj_object.name)
