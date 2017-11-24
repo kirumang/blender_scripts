@@ -35,3 +35,16 @@ bpy.ops.rigidbody.object_settings_copy()
 
 
 print('Imported name: ', obj_object.name)
+
+##Select camera and render it
+
+scene = bpy.context.scene
+
+for ob in scene.objects:
+    if ob.type == 'CAMERA':
+        bpy.context.scene.camera = ob
+        print('Set camera %s' % ob.name )
+        file = os.path.join("C:/tmp", ob.name )
+        bpy.context.scene.render.filepath = file
+        bpy.ops.render.render( write_still=True )
+        
