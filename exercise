@@ -47,4 +47,15 @@ for ob in scene.objects:
         file = os.path.join("C:/tmp", ob.name )
         bpy.context.scene.render.filepath = file
         bpy.ops.render.render( write_still=True )
-        
+#yaml file export   
+
+import numpy as np
+import yaml
+matrix = np.random.randint(2, size=(10,7))
+with open('stack21658676.yaml', 'w') as f:
+    yaml.dump(matrix.tolist(), f)
+
+with open('stack21658676.yaml') as f:
+    loaded = yaml.load(f)
+loaded = np.array(loaded)
+print loaded
